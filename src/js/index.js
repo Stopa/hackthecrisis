@@ -1,12 +1,34 @@
 import videojs from 'video.js';
+import { Publisher, PUBLISHER_EVENTS, PUBLISHER_STATUSES } from '@flussonic/flussonic-webrtc-player';
 require('@videojs/http-streaming');
 
 function getCamera() {
-  const video = document.getElementById('webcam-video');
+  const previewElement = document.getElementById('webcam-video');
 
-  navigator.mediaDevices.getUserMedia({
-    video: true
-  }).then(stream => video.srcObject = stream);
+  const streamUUID = 'teststreamroom'
+
+  const publisher = new Publisher(
+    `wss://live-streamer.videolevels.com/elektron/${streamUUID}?password=tron`,
+    {
+      preview: previewElement,
+      previewOptions: {
+        autoplay: true,
+        controls: false,
+        muted: true,
+      },
+      constraints: {
+        video: true,
+        audio: false,
+      },
+      onWebsocketClose: () => console.log('websocket closed')
+    },
+    true,
+  );
+
+  publisher.on(PUBLISHER_EVENTS.STREAMING, () => {
+    console.log('Streaming started');
+  });
+  publisher.start();
 }
 
 function initMainStream() {

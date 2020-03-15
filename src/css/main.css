@@ -4,6 +4,7 @@ html, body {
 
 body {
   margin: 0;
+  background: black;
 }
 
 #app {
@@ -18,4 +19,8 @@ body {
 .stream video-js {
   height: 100%;
   width: 100%;
+}
+
+.stream--performance-main {
+  grid-row: 1 / span 2;
 }
