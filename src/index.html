@@ -4,10 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hack The Crisis: Elektron</title>
+  <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
 
-  <video src="https://live-streamer.videolevels.com/elektron/test/preview.mp4"></video>
+  <main id="app">
+    <section class="stream stream--performance-main">
+      <video-js id="main-stream" controls>
+        <source src="https://live-streamer.videolevels.com/elektron/test/index.m3u8" type="application/x-mpegURL">
+      </video-js>
+    </section>
+    <section class="stream stream--performance-mosaic">
+      <video-js id="performance-mosaic"></video-js>
+    </section>
+    <section class="stream stream--audience-member">
+      <video-js id="audience-member"></video-js>
+    </section>
+    <section class="stream stream--webcam">
+      <video id="webcam-video" autoplay></video>
+    </section>
+  </main>
   
   <script src="main.js"></script>
 </body>
