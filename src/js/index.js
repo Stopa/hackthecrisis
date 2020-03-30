@@ -1,11 +1,12 @@
 import videojs from 'video.js';
 import { Publisher, PUBLISHER_EVENTS, PUBLISHER_STATUSES } from '@flussonic/flussonic-webrtc-player';
+import { v4 } from 'uuid';
 require('@videojs/http-streaming');
 
 function getCamera() {
   const previewElement = document.getElementById('webcam-video');
 
-  const streamUUID = 'teststreamroom'
+  const streamUUID = v4();
 
   const publisher = new Publisher(
     `wss://live-streamer.videolevels.com/elektron/${streamUUID}?password=tron`,
