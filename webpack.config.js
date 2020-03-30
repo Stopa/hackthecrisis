@@ -1,12 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/index.js',
+  entry: {
+    main: './src/js/index.js',
+    style: './src/css/main.css'
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
@@ -16,9 +19,24 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
     }),
-    new CopyPlugin([{
-      from: path.resolve(__dirname, 'src/css'),
-      to: path.resolve(__dirname, 'dist'),
-    }]),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  }
 };

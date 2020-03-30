@@ -3,26 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hack The Crisis: Elektron</title>
+  <title>elektron live</title>
   <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
-  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
 
   <main id="app">
-    <section class="stream stream--performance-main">
-      <video-js id="main-stream" controls autoplay>
-        <source src="https://live-streamer.videolevels.com/elektron/elektron_47/index.m3u8" type="application/x-mpegURL">
-      </video-js>
+    <header class="app-header">
+      <h1 class="main-brand">
+        <a href="#" class="logo">Elektron</a>
+        <span>Festival of Spooky Action at a Distance</span>
+      </h1>
+    </header>
+    <section class="live-data">
+      <div>
+        <h2 class="em">Live now</h2>
+        EMA - Udo Kasemets: "Tt - tribute to Buckminster Fuller, Mashall McLuhan, John Cage"
+      </div>
+      <div>
+        <h2>Spectator counter: 1320</h2>
+      </div>
     </section>
-    <!--section class="stream stream--performance-mosaic">
-      <video-js id="performance-mosaic"></video-js>
-    </section-->
-    <section class="stream stream--audience-member">
-      <video id="audience-member" autoplay></video>
-    </section>
-    <section class="stream stream--webcam">
-      <video id="webcam-video" autoplay></video>
+    <main class="main-content">
+      <article class="stream stream--main">
+        <video-js id="main-stream" controls autoplay>
+          <source src="https://live-streamer.videolevels.com/elektron/elektron_47/index.m3u8" type="application/x-mpegURL">
+        </video-js>
+      </article>
+      <article class="programme" style="white-space: pre">
+        PROGRAMME
+
+I	IGGY LOND MALMBORG 
+II	HIROAKI UMEDA
+III	METTE EDVARDSEN
+IV	HENRI HÜTT & VEIKO TUBIN
+V	WORKSHOP
+
+Almost a concert:
+
+I 	EMA & Udo Kasemets
+
+Seminar “WHERE HAVE ALL THE MAGIC GONE”:
+(Seminar sellest, mis saab teatrist kui teatrit pole)
+A Curator
+A Viewer
+An Artist
+Another Guy
+
+404 Event Not Found:
+
+I 	Kiva
+II	Compound Minerals
+III	MIM collab
+IV	Kleis  
+      </article>
+      <article class="chat">
+        <script id="cid0020000246593815710" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">{"handle":"elektronlivetest","arch":"js","styles":{"a":"000000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"000000","l":"000000","m":"000000","n":"FFFFFF","p":"10","q":"000000","r":100,"t":0,"usricon":0,"allowpm":0}}</script>
+      </article>
+      <article class="stream stream--spectators">
+        <video-js id="spectators-stream" autoplay muted>
+          <source src="https://live-streamer.videolevels.com/elektron/elektron_560/index.m3u8" type="application/x-mpegURL">
+        </video-js>
+      </article>
     </section>
   </main>
   

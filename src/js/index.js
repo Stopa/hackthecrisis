@@ -4,14 +4,11 @@ import { v4 } from 'uuid';
 require('@videojs/http-streaming');
 
 function getCamera() {
-  const previewElement = document.getElementById('webcam-video');
-
   const streamUUID = v4();
 
   const publisher = new Publisher(
     `wss://live-streamer.videolevels.com/elektron/${streamUUID}?password=tron`,
     {
-      preview: previewElement,
       previewOptions: {
         autoplay: true,
         controls: false,
@@ -37,7 +34,12 @@ function initMainStream() {
   mainStream.volume(0.1);
 }
 
+function initSpectatorsStream() {
+  videojs('spectators-stream', { autoplay: true});
+}
+
 window.onload = () => {
   getCamera()
   initMainStream();
+  initSpectatorsStream();
 }
