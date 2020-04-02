@@ -20,7 +20,7 @@ function getCamera() {
       },
       onWebsocketClose: () => console.log('websocket closed')
     },
-    true,
+    false, // log
   );
 
   publisher.on(PUBLISHER_EVENTS.STREAMING, () => {
@@ -35,7 +35,19 @@ function initMainStream() {
 }
 
 function initSpectatorsStream() {
-  videojs('spectators-stream', { autoplay: true});
+  videojs('spectators-stream', {
+    autoplay: true,
+    muted: true,
+    controls: false,
+  });
+
+  document.querySelector('.spectators-overlay').addEventListener('click', (e) => {
+    var rect = e.target.getBoundingClientRect();
+    var x = e.clientX - rect.left; //x position within the element.
+    var y = e.clientY - rect.top;  //y position within the element.
+
+    console.log(`CLICKED SPECTATOR VIDEO AT X: ${x}; Y: ${y}`);
+  });
 }
 
 window.onload = () => {
