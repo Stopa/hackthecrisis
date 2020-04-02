@@ -53,6 +53,7 @@ a {
       width: 167px;
       height: 30px;
       background-size: contain;
+      margin-right: 12px;
     }
 
 .live-data {
@@ -105,4 +106,28 @@ a {
 .stream video-js {
   height: 100%;
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .main-brand {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+
+  .programme,
+  .chat {
+    display: none;
+  }
+
+  .main-content {
+    display: block;
+  }
+
+  .stream--main {
+    height: 50%;
+  }
+
+  .stream--spectators {
+    height: 50%;
+  }
 }
