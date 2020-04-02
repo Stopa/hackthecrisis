@@ -7,7 +7,7 @@ function getCamera() {
   const streamUUID = v4();
 
   const publisher = new Publisher(
-    `wss://live-streamer.videolevels.com/elektron/${streamUUID}?password=tron`,
+    `wss://elektron-live.videolevels.com/elektron/${streamUUID}?password=tron`,
     {
       previewOptions: {
         autoplay: true,
@@ -16,7 +16,7 @@ function getCamera() {
       },
       constraints: {
         video: true,
-        audio: false,
+        audio: true,
       },
       onWebsocketClose: () => console.log('websocket closed')
     },
