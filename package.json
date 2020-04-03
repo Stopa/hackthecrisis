@@ -5,9 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "@flussonic/flussonic-webrtc-player": "^20.3.1",
-    "@videojs/http-streaming": "^1.12.2",
+    "@videojs/http-streaming": "1.13.2",
     "uuid": "^7.0.2",
-    "video.js": "^7.6.6"
+    "video.js": "7.7.5"
   },
   "devDependencies": {
     "css-loader": "^3.4.2",
