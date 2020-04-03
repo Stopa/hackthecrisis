@@ -7,7 +7,7 @@ function getCamera() {
   const streamUUID = v4();
 
   const publisher = new Publisher(
-    `wss://elektron-live.videolevels.com/elektron/${streamUUID}?password=tron`,
+    `wss://elektron-live.babahhcdn.com/bb1150-le/${streamUUID}?password=tron`,
     {
       previewOptions: {
         autoplay: true,
@@ -46,7 +46,34 @@ function initSpectatorsStream() {
     var x = e.clientX - rect.left; //x position within the element.
     var y = e.clientY - rect.top;  //y position within the element.
 
-    console.log(`CLICKED SPECTATOR VIDEO AT X: ${x}; Y: ${y}`);
+    fetch(`/getstream.php?x=${x}&y=${y}`)
+    .then((res) => {
+      return res.text();
+    })
+    .then((streamURL) => {
+      const sourceElement = document.createElement('source'); // spectator stream source
+      sourceElement.setAttribute('src', streamURL);
+      sourceElement.setAttribute('type', 'application/x-mpegURL');
+
+      const videoElement = document.createElement('video'); // spectator stream video element
+      videoElement.setAttribute('id', 'spectator-stream');
+      videoElement.appendChild(sourceElement);
+
+      const container = document.querySelector('.spectator-stream .content');
+      container.innerHTML = ''; // clear contents
+      container.appendChild(videoElement); // append new video
+      videojs('spectator-stream', { autoplay: true, muted: true, controls: false }); // initialize video.js
+
+      document.querySelector('.stream--spectators').classList.add('show-spectator'); // show overlay
+    })
+    .catch(() => console.error('failed getting stream URL'));
+  });
+
+  document.querySelector('.spectator-stream .close').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    document.querySelector('.show-spectator').classList.remove('show-spectator'); // hide overlay
+    document.querySelector('.spectator-stream .content').innerHTML = ''; // remove contents
   });
 }
 
