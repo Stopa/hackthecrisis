@@ -164,20 +164,27 @@ a {
     padding: 8px 0;
   }
 
-  .programme,
-  .chat {
-    display: none;
-  }
-
   .main-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .stream--main {
-    height: 50%;
+    height: 50vh;
+    order: 1;
   }
 
   .stream--spectators {
-    height: 50%;
+    height: 50vh;
+    order: 2;
+  }
+
+  .chat {
+    height: 50vh;
+    order: 3;
+  }
+
+  .programme {
+    order: 4;
   }
 }
