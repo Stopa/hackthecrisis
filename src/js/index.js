@@ -7,7 +7,7 @@ function getCamera() {
   const streamUUID = v4();
 
   const publisher = new Publisher(
-    `wss://elektron-live.babahhcdn.com/bb1150-le/${streamUUID}?password=tron`,
+    `wss://fo1.babahhcdn.com/elektron/${streamUUID}?password=tron`,
     {
       previewOptions: {
         autoplay: true,

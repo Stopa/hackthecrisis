@@ -92,6 +92,14 @@ a {
   overflow: auto;
 }
 
+.programme a {
+  text-decoration: none;
+}
+
+.programme a:hover {
+  text-decoration: underline;
+}
+
 .chat {
   grid-row: 2;
   grid-column: 2;
